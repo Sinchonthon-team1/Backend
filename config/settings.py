@@ -27,7 +27,9 @@ SECRET_KEY = "django-insecure-yzs7)+h50#-q+uwc64ps5)y(d-*9me#^yki4%#8osj!0(b8r04
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "corsheaders", 
 
     'user',
     'match',
@@ -52,12 +55,17 @@ AUTH_USER_MODEL = 'user.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',  # 추가
     ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=3000),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': False,
@@ -99,25 +107,28 @@ REST_FRAMEWORK = {
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # CORS 미들웨어 추가
+    "django.middleware.common.CommonMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'django.middleware.common.CommonMiddleware',
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-CORS_ALLOW_ORIGIS = [
-    "http://localhost:5173",
-]
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
-]
+# CORS_ALLOW_ORIGIS = [
+#     "http://localhost:5175",
+# ]
 
-CORS_ALLOW_CREDENTIALS = True
+# CSRF_TRUSTED_ORIGINS = [
+#     "http://localhost:5175",
+# ]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+
 
 ROOT_URLCONF = "config.urls"
 
