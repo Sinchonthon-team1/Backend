@@ -81,7 +81,7 @@ python3 manage.py runserver
         </td>
         <td style="min-width: 150px;">
             <a href="https://github.com/lee-youn">
-              <img src="https://github.com/lee-youn.img" width="100">
+              <img src="https://github.com/lee-youn.png" width="100">
               <br />
               <b></b>
             </a>
