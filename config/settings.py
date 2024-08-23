@@ -27,7 +27,9 @@ SECRET_KEY = "django-insecure-yzs7)+h50#-q+uwc64ps5)y(d-*9me#^yki4%#8osj!0(b8r04
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
@@ -39,7 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'corsheaders',
+    "corsheaders", 
 
     'user',
     'match',
@@ -105,15 +107,16 @@ REST_FRAMEWORK = {
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # CORS 미들웨어 추가
+    "django.middleware.common.CommonMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'django.middleware.common.CommonMiddleware',
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
 
 # CORS_ALLOW_ORIGIS = [
 #     "http://localhost:5175",
@@ -125,7 +128,7 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ALLOW_CREDENTIALS = True
+
 
 ROOT_URLCONF = "config.urls"
 
