@@ -35,7 +35,7 @@ python3 manage.py runserver
 
 ## 🙇 팀원소개
 
-<table>
+<table align="center">
     <tr align="center">
         <td style="min-width: 150px;">
             <a href="">
