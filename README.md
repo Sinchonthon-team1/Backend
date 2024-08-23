@@ -80,8 +80,8 @@ python3 manage.py runserver
             </a>
         </td>
         <td style="min-width: 150px;">
-            <a href="">
-              <img src="" width="100">
+            <a href="https://github.com/lee-youn">
+              <img src="https://github.com/lee-youn.img" width="100">
               <br />
               <b></b>
             </a>
@@ -89,7 +89,7 @@ python3 manage.py runserver
     </tr>
        <tr align="center">
         <td>
-            Design
+            Design/PM
         </td>
         <td>
             Front
@@ -112,25 +112,25 @@ python3 manage.py runserver
       </tr>
       <tr align="center">
         <td>
-            ISFP
+            박하경
         </td>
         <td>
-            INFP
+            김예원
         </td>
         <td>
-            INFP
+            심수연
         </td>
         <td>
-            INFP
+            윤영준
         </td>
         <td>
-            INFP
+            김예송
         </td>
         <td>
-            INFP
+            이석원
         </td>
         <td>
-            INFP
+            이윤정
         </td>
     </tr>
 </table>
