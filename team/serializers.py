@@ -9,19 +9,19 @@ class TeamNameSerializer(serializers.ModelSerializer):
 
 # class TeamSerializer(serializers.ModelSerializer):
 #     leader = serializers.CharField(source='leader.nickname')
-#     # leaderTier = serializers.CharField(source='leader.tier')
+#     leaderTier = serializers.CharField(source='leader.tier')
     
 #     member2 = serializers.CharField(source='member2.nickname', allow_null=True)
-#     # member2Tier = serializers.CharField(source='member2.tier', allow_null=True)
+#     member2Tier = serializers.CharField(source='member2.tier', allow_null=True)
 
 #     member3 = serializers.CharField(source='member3.nickname', allow_null=True)
-#     # member3Tier = serializers.CharField(source='member3.tier', allow_null=True)
+#     member3Tier = serializers.CharField(source='member3.tier', allow_null=True)
 
 #     member4 = serializers.CharField(source='member4.nickname', allow_null=True)
-#     # member4Tier = serializers.CharField(source='member4.tier', allow_null=True)
+#     member4Tier = serializers.CharField(source='member4.tier', allow_null=True)
 
 #     member5 = serializers.CharField(source='member5.nickname', allow_null=True)
-#     # member5Tier = serializers.CharField(source='member5.tier', allow_null=True)
+#     member5Tier = serializers.CharField(source='member5.tier', allow_null=True)
     
 
 #     class Meta:
@@ -43,10 +43,17 @@ class TeamNameSerializer(serializers.ModelSerializer):
 #         ]
 
 class TeamRequestSerializer(serializers.ModelSerializer):
+    leader = serializers.CharField()
+    member2 = serializers.CharField()
+    member3 = serializers.CharField()
+    member4 = serializers.CharField()
+    member5 = serializers.CharField()
+
+    
     class Meta:
         model = Team
         fields = [
-            'teamName', 
+            'teamame', 
             'school', 
             'leader', 
             'member2', 
@@ -55,8 +62,5 @@ class TeamRequestSerializer(serializers.ModelSerializer):
             'member5'
         ]
     
-    def create(self, validated_data):
-        team = Team.objects.create(**validated_data)
-        return team
-            
+    
 

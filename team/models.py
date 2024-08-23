@@ -17,3 +17,6 @@ class Team(models.Model):
     class Meta : 
         db_table = 'teams'
 
+    def __str__(self):
+        return self.teamName
+
