@@ -76,8 +76,8 @@ python3 manage.py runserver
             </a>
         </td>
         <td style="min-width: 150px;">
-            <a href="">
-              <img src="" width="80">
+            <a href="https://github.com/leerura">
+              <img src="https://github.com/leerura.png" width="80">
               <br />
               <b></b>
             </a>
