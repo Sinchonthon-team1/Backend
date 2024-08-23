@@ -114,7 +114,7 @@ python3 manage.py runserver
         </td>
       </tr>
       <tr align="center">
-        <td color="green">
+        <td>
             박하경
         </td>
         <td>
