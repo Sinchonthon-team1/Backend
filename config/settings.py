@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     'user',
     'match',
+    'team',
 
     'rest_framework',
     'rest_framework_simplejwt',
