@@ -27,7 +27,7 @@ class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
         fields = [
-            'teamname', 
+            'teamName', 
             'school', 
             'teamTier',
             'leader', 
@@ -46,7 +46,7 @@ class TeamRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
         fields = [
-            'teamname', 
+            'teamName', 
             'school', 
             'leader', 
             'member2', 

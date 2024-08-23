@@ -5,7 +5,9 @@ from django.core.exceptions import ObjectDoesNotExist
 from .models import Team
 from .serializers import TeamSerializer, TeamRequestSerializer, TeamNameSerializer
 from user.models import User
-from rest_framework.permissions import IsAuthenticated, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -46,7 +48,7 @@ def create_team(request):
                 "message": "본인이 포함된 팀만 등록 가능합니다."
             }, status=status.HTTP_409_CONFLICT)
 
-        #team = serializer.save(teamTier=teamTier)
+        #team = serializer.save(teamTier=teamTier) ##티어 부분이 확정되지 않아 ..
         #response_serializer = TeamSerializer(team)
 
         #return Response(response_serializer.data, status=status.HTTP_201_CREATED)
