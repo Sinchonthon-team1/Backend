@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-yzs7)+h50#-q+uwc64ps5)y(d-*9me#^yki4%#8osj!0(b8r04
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] #나중에 수정
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "corsheaders", 
 
     'user',
     'match',
@@ -98,25 +99,35 @@ REST_FRAMEWORK = {
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # CORS 미들웨어 추가
+    "django.middleware.common.CommonMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'django.middleware.common.CommonMiddleware',
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-CORS_ALLOW_ORIGIS = [
-    "http://localhost:5173",
-]
+CORS_ORIGIN_WHITELIST = ['http://localhost:5175']
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
-]
+#CORS_ALLOW_ORIGIS = [
+#    "http://localhost:5175",
+#]
+
+#CSRF_TRUSTED_ORIGINS = [
+#    "http://localhost:5175",
+#]
+
+CORS_ALLOW_ALL_ORIGIS = True
 
 CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5175",
+    # "https://your-production-domain.com",
+]
+
 
 ROOT_URLCONF = "config.urls"
 

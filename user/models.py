@@ -4,23 +4,28 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 # Create your models here.
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, nickname, password, **kwargs):
+    def create_user(self, email, name, game_name, age, password, tag_line, puuid, **kwargs):
         if not email: 
             raise ValueError('Users must have an email')
-        if not nickname:
-            raise ValueError('Users must have a nickname')
+        if not game_name:
+            raise ValueError('Users must have a game_name')
         user = self.model(
             email = email,
+            name = name,
+            game_name = game_name,
+            age = age,
+            tag_line = tag_line,
+            puuid = puuid,
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, nickname='관리자', password=None, **extra_fields):
+    def create_superuser(self, email, age, password=None, **extra_fields):
         superuser = self.create_user(
             email=email,
-            nickname=nickname, 
             password=password,
+            age=age,
         )
         
         superuser.is_staff = True
@@ -34,8 +39,12 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     
     email = models.EmailField(unique=True, null=False, blank=False)
-    nickname = models.CharField(max_length=100, null=False, blank=False)
+    name = models.CharField(max_length=100, null=False, blank=False, default="이름")
+    game_name = models.CharField(max_length=100, null=False, blank=False , default="게임 닉네임")
+    tag_line = models.CharField(max_length=100, blank = True, default="00")
+    age = models.IntegerField(null=False, blank=False, default=0)
     school = models.CharField(max_length=100, blank = True)
+    puuid = models.CharField(max_length=200, blank = True, default="0")
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
