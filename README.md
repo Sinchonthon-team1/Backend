@@ -38,15 +38,15 @@ python3 manage.py runserver
 <table align="center">
     <tr align="center">
         <td style="min-width: 150px;">
-            <a href="https://github.com/yeeeww">
-              <img src="https://github.com/yeeeww.png" width="100">
+            <a href="">
+              <img src="" width="100">
               <br />
               <b></b>
             </a>
         </td>
         <td style="min-width: 150px;">
-            <a href="">
-              <img src="" width="100">
+            <a href="https://github.com/yeeeww">
+              <img src="https://github.com/yeeeww.png" width="100">
               <br />
               <b></b>
             </a>
