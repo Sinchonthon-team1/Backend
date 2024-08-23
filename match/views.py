@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Match
 from user.models import User
-from serializers import MatchSerializer
+from .serializers import MatchSerializer
 
 
 #경기 등록 데이터
