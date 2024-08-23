@@ -33,7 +33,6 @@ python3 manage.py runserver
 
 <hr/>
 
-![image](https://github.com/user-attachments/assets/af75d00f-2e0b-44e6-b673-39828f419c1c)
 
 
 
@@ -43,49 +42,49 @@ python3 manage.py runserver
     <tr align="center">
         <td style="min-width: 150px;">
             <a href="">
-              <img src="https://github.com/user-attachments/assets/af75d00f-2e0b-44e6-b673-39828f419c1c" width="60">
+              <img src="https://github.com/user-attachments/assets/af75d00f-2e0b-44e6-b673-39828f419c1c" width="80">
               <br />
               <b></b>
             </a>
         </td>
         <td style="min-width: 150px;">
             <a href="https://github.com/yeeeww">
-              <img src="https://github.com/yeeeww.png" width="60">
+              <img src="https://github.com/yeeeww.png" width="80">
               <br />
               <b></b>
             </a>
         </td>
         <td style="min-width: 150px;">
             <a href="https://github.com/letthem">
-              <img src="https://github.com/letthem.png" width="60">
+              <img src="https://github.com/letthem.png" width="80">
               <br />
               <b></b>
             </a>
         </td>
         <td style="min-width: 150px;">
             <a href="https://github.com/yyj0917">
-              <img src="https://github.com/yyj0917.png" width="60">
+              <img src="https://github.com/yyj0917.png" width="80">
               <br />
               <b></b>
             </a>
         </td>
         <td style="min-width: 150px;">
             <a href="">
-              <img src="" width="60">
+              <img src="" width="80">
               <br />
               <b></b>
             </a>
         </td>
         <td style="min-width: 150px;">
             <a href="">
-              <img src="" width="60">
+              <img src="" width="80">
               <br />
               <b></b>
             </a>
         </td>
         <td style="min-width: 150px;">
             <a href="https://github.com/lee-youn">
-              <img src="https://github.com/lee-youn.png" width="60">
+              <img src="https://github.com/lee-youn.png" width="80">
               <br />
               <b></b>
             </a>
