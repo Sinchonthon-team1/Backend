@@ -8,7 +8,9 @@ from user.models import User
 from .serializers import MatchSerializer
 
 
+
 #경기 등록 데이터
+
 @api_view(['POST','GET'])
 @permission_classes([IsAuthenticated])
 def MatchRegistData(request):

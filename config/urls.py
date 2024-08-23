@@ -22,5 +22,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/user/", include("user.urls")),
     path("api/match/", MatchRegistData),
-    path("api/match/all/", MatchList)
+    path("api/match/all/", MatchList),
+    path("api/team/", include("team.urls"))
 ]
