@@ -9,10 +9,10 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+#@permission_classes([IsAuthenticated])
 def create_team(request):
     data = request.data
-    user = request.user
+    #user = request.user
     serializer = TeamRequestSerializer(data=data)
 
     if serializer.is_valid():
@@ -42,13 +42,13 @@ def create_team(request):
                     "message": "가입하지 않은 사용자입니다."
                 }, status=status.HTTP_400_BAD_REQUEST)
         
-        if user.gamename not in members:
-            return Response({
-                "message": "본인이 포함된 팀만 등록 가능합니다."
-            }, status=status.HTTP_409_CONFLICT)
+        # if user.gamename not in members:
+        #     return Response({
+        #         "message": "본인이 포함된 팀만 등록 가능합니다."
+        #     }, status=status.HTTP_409_CONFLICT)
 
         #team = serializer.save(teamTier=teamTier) ##티어 부분이 확정되지 않아 ..
-        response_serializer = TeamRequestSerializer(request)
+        #response_serializer = TeamRequestSerializer(request)
 
         #return Response(response_serializer.data, status=status.HTTP_201_CREATED)
         team = Team.objects.create(
