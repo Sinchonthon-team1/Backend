@@ -38,8 +38,8 @@ python3 manage.py runserver
 <table align="center">
     <tr align="center">
         <td style="min-width: 150px;">
-            <a href="">
-              <img src="" width="100">
+            <a href="https://github.com/yeeeww">
+              <img src="https://github.com/yeeeww.png" width="100">
               <br />
               <b></b>
             </a>
@@ -52,15 +52,15 @@ python3 manage.py runserver
             </a>
         </td>
         <td style="min-width: 150px;">
-            <a href="">
-              <img src="" width="100">
+            <a href="https://github.com/letthem">
+              <img src="https://github.com/letthem.png" width="100">
               <br />
               <b></b>
             </a>
         </td>
         <td style="min-width: 150px;">
-            <a href="">
-              <img src="" width="100">
+            <a href="https://github.com/yyj0917">
+              <img src="https://github.com/yyj0917.png" width="100">
               <br />
               <b></b>
             </a>
@@ -92,22 +92,22 @@ python3 manage.py runserver
             Design/PM
         </td>
         <td>
-            Front
+            Frontend
         </td>
         <td>
-            Front
+            Frontend
         </td>
         <td>
-            Front
+            Frontend
         </td>
         <td>
-            Back
+            Backend
         </td>
         <td>
-            Back
+            Backend
         </td>
         <td>
-            Back
+            Backend
         </td>
       </tr>
       <tr align="center">
