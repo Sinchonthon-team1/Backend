@@ -69,8 +69,8 @@ python3 manage.py runserver
             </a>
         </td>
         <td style="min-width: 150px;">
-            <a href="">
-              <img src="" width="80">
+            <a href="https://github.com/optiprime27">
+              <img src="https://github.com/optiprime27.png" width="80">
               <br />
               <b></b>
             </a>
