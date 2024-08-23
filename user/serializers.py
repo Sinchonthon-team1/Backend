@@ -9,15 +9,15 @@ class UserSerializer(serializers.ModelSerializer):
     
     
     def create(self, validated_data):
-        school = validated_data.pop('school', None)
-        
+        # User 객체 생성
         user = User.objects.create_user(
-            email = validated_data['email'],
-            nickname = validated_data['nickname'],
-            password = validated_data['password'],
+            email=validated_data['email'],
+            nickname=validated_data['nickname'],
+            password=validated_data['password'],
         )
-
-        # school 데이터가 있을 경우 추가로 저장
+        
+        # school 필드를 포함하여 저장
+        school = validated_data.get('school')
         if school:
             user.school = school
             user.save()

@@ -12,6 +12,9 @@ import logging
 from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework.permissions import IsAuthenticated
 from dotenv import load_dotenv
+from riotwatcher import LolWatcher, ApiError
+import pandas as pd
+import requests
 
 load_dotenv()
 
@@ -44,23 +47,65 @@ def find_universities_by_email(email):
             print(f"File not found: {file_path}")
     return matched_universities
 
+api_key = 'RGAPI-d35aa1e6-d49e-4d9c-8739-aaac4a98e2cd' #배포할 때 수정
+watcher = LolWatcher(api_key)
+my_region = 'kr'
+
+def check_summoner_name(game_name, tag_line):
+    url = f"https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{game_name}/{tag_line}"
+    headers = {"X-Riot-Token": api_key}
+
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        return True
+    elif response.status_code == 404:
+        return False
+    else:
+        return False
+
 
 class RegisterAPIView(APIView):
-    def post(self, request):
-        serializer = UserSerializer(data=request.data)
 
-        if serializer.is_valid():
-            email = serializer.validated_data.get('email')
+    def post(self, request):
+        game_name = request.data['game_name']
+        tag_line = request.data['tag_line']
+
+        url = f"https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{game_name}/{tag_line}"
+        headers = {"X-Riot-Token": api_key}
+
+        response = requests.get(url, headers=headers)
+
+        if response.status_code == 200:
+            serializer = UserSerializer(data=request.data)
+            if serializer.is_valid():
+                email = serializer.validated_data.get('email')
+                nickname = serializer.validated_data.get('nickname')
+                puuid = response.json()['puuid']
+                
+                # 이메일 주소와 일치하는 학교 찾기
+                matched_universities = find_universities_by_email(email)
+                if not matched_universities:
+                    return Response({"message": "학교 메일이 아닙니다."}, status=status.HTTP_400_BAD_REQUEST)
+
+                serializer.save(
+                    school=matched_universities[0]
+                )
+
+                return Response({"message": "성공적으로 등록되었습니다."}, status=status.HTTP_201_CREATED)
         
-            # 이메일 주소와 일치하는 학교 찾기
-            matched_universities = find_universities_by_email(email)
-            if not matched_universities:
-                return Response({"message": "학교 메일이 아닙니다."}, status=status.HTTP_400_BAD_REQUEST)
-            serializer.email = email
-            serializer.save(school=matched_universities[0])
-            return Response({"message": "성공적으로 등록되었습니다."}, status=status.HTTP_201_CREATED)
-        
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                # 이메일 주소와 일치하는 학교 찾기
+                matched_universities = find_universities_by_email(email)
+                if not matched_universities:
+                    return Response({"message": "학교 메일이 아닙니다."}, status=status.HTTP_400_BAD_REQUEST)
+                serializer.save(school=matched_universities[0],
+                                puuid=puuid)
+                return Response({"message": "성공적으로 등록되었습니다."}, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        elif response.status_code == 404:
+            return Response({"message": "해당 게임 이름과 태그 라인이 존재하지 않습니다."}, status=status.HTTP_404_NOT_FOUND)
+        else:
+            return Response({"message": "Riot API와 통신 중 오류가 발생했습니다."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
     
     
 class LoginAPIView(APIView):
@@ -133,10 +178,48 @@ class tokenAPIView(APIView):
                 response.delete_cookie('access_token')
                 response.delete_cookie('refresh_token')
                 return response
-
+           
         except User.DoesNotExist:
             return Response({"message": "User not found"}, status=status.HTTP_404_NOT_FOUND)
         
         except Exception as e:
             logging.error(f"Unexpected error: {str(e)}")
             return Response({"message": "Internal server error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+
+class CheckSummonerNameAPIView(APIView):
+
+    def post(self, request):
+        game_name = request.data['game_name']
+        tag_line = request.data['tag_line']
+        if not game_name or not tag_line:
+            return Response({'error': 'Summoner name is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        url = f"https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{game_name}/{tag_line}"
+        headers = {"X-Riot-Token": api_key}
+
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            return Response({"exists": True, "data": response.json()})
+        elif response.status_code == 404:
+            return Response({"exists": False, "message": "Summoner not found."})
+        else:
+            return Response({"exists": False, "message": "An error occurred."}, status=response.status_code)
+        
+class SpectatorAPIView(APIView):
+
+    def post(self, request):
+        puuid = request.data['puuid']
+        if not puuid:
+            return Response({'error': 'puppid is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        url = f"https://asia.api.riotgames.com/lol/spectator/v5/active-games/by-summoner/{puuid}"
+        headers = {"X-Riot-Token": api_key}
+
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            return Response({"exists": True, "data": response.json()})
+        elif response.status_code == 404:
+            return Response({"exists": False, "message": "게임중이 아님."})
+        else:
+            return Response({"exists": False, "message": "An error occurred."}, status=response.status_code)
