@@ -51,10 +51,83 @@ python3 manage.py runserver
               <b></b>
             </a>
         </td>
+        <td style="min-width: 150px;">
+            <a href="">
+              <img src="" width="100">
+              <br />
+              <b></b>
+            </a>
+        </td>
+        <td style="min-width: 150px;">
+            <a href="">
+              <img src="" width="100">
+              <br />
+              <b></b>
+            </a>
+        </td>
+        <td style="min-width: 150px;">
+            <a href="">
+              <img src="" width="100">
+              <br />
+              <b></b>
+            </a>
+        </td>
+        <td style="min-width: 150px;">
+            <a href="">
+              <img src="" width="100">
+              <br />
+              <b></b>
+            </a>
+        </td>
+        <td style="min-width: 150px;">
+            <a href="">
+              <img src="" width="100">
+              <br />
+              <b></b>
+            </a>
+        </td>
     </tr>
+       <tr align="center">
+        <td>
+            Design
+        </td>
+        <td>
+            Front
+        </td>
+        <td>
+            Front
+        </td>
+        <td>
+            Front
+        </td>
+        <td>
+            Back
+        </td>
+        <td>
+            Back
+        </td>
+        <td>
+            Back
+        </td>
+      </tr>
       <tr align="center">
         <td>
             ISFP
+        </td>
+        <td>
+            INFP
+        </td>
+        <td>
+            INFP
+        </td>
+        <td>
+            INFP
+        </td>
+        <td>
+            INFP
+        </td>
+        <td>
+            INFP
         </td>
         <td>
             INFP
