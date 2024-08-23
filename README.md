@@ -39,7 +39,8 @@ python3 manage.py runserver
     <tr align="center">
         <td style="min-width: 150px;">
             <a href="">
-              <img src="![image](https://github.com/user-attachments/assets/7ba9b2d5-5722-4935-8c13-e821453128ec)" width="60">
+              <img src="![image](https://github.com/user-attachments/assets/b62141d6-ce84-4a40-9563-57e219add723)
+" width="60">
               <br />
               <b></b>
             </a>
