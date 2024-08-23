@@ -29,7 +29,7 @@ def create_team(request):
         school = serializer.validated_data.get('school')
         for member in members:
             try:
-                checked_member = User.objects.get(gamename = member) #pk가 nickname이 아니면 닉네임 겹칠수도.. 
+                checked_member = User.objects.get(game_name = member) #pk가 nickname이 아니면 닉네임 겹칠수도.. 
                 #teamTier += checked_member.tier #변수 변경 필요
             
                 if school != checked_member.school:
@@ -54,11 +54,11 @@ def create_team(request):
         team = Team.objects.create(
             teamName=serializer.validated_data['teamName'],
             school=school,
-            leader=User.objects.get(gamename=serializer.validated_data['leader']),
-            member2=User.objects.get(gamename=serializer.validated_data['member2']),
-            member3=User.objects.get(gamename=serializer.validated_data['member3']),
-            member4=User.objects.get(gamename=serializer.validated_data['member4']),
-            member5=User.objects.get(gamename=serializer.validated_data.get('member5'))
+            leader=User.objects.get(game_name=serializer.validated_data['leader']),
+            member2=User.objects.get(game_name=serializer.validated_data['member2']),
+            member3=User.objects.get(game_name=serializer.validated_data['member3']),
+            member4=User.objects.get(game_name=serializer.validated_data['member4']),
+            member5=User.objects.get(game_name=serializer.validated_data.get('member5'))
         )
 
         return Response({
