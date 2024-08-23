@@ -11,6 +11,8 @@ class UserManager(BaseUserManager):
             raise ValueError('Users must have a nickname')
         user = self.model(
             email = email,
+            nickname=nickname, 
+            password=password,
         )
         user.set_password(password)
         user.save(using=self._db)

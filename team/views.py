@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Team
-from .serializers import TeamSerializer, TeamRequestSerializer, TeamNameSerializer
+from .serializers import  TeamRequestSerializer, TeamNameSerializer
 from user.models import User
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
@@ -75,7 +75,7 @@ def check_name(request):
 def get_team(request, id):
     try:
         team = Team.objects.get(pk=id)
-        serializer = TeamSerializer(team)
+        serializer = TeamRequestSerializer(team)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Team.DoesNotExist:
         return Response({

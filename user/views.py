@@ -61,8 +61,6 @@ class RegisterAPIView(APIView):
                 return Response({"message": "학교 메일이 아닙니다."}, status=status.HTTP_400_BAD_REQUEST)
 
             serializer.save(
-                email=email,
-                nickname=nickname,
                 school=matched_universities[0]
             )
 
