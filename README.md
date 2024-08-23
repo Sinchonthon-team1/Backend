@@ -40,49 +40,49 @@ python3 manage.py runserver
         <td style="min-width: 150px;">
             <a href="">
               <img src="![image](https://github.com/user-attachments/assets/1d730a9b-9c6b-4c5e-995b-ea5bada3355f)
-" width="100">
+" width="60">
               <br />
               <b></b>
             </a>
         </td>
         <td style="min-width: 150px;">
             <a href="https://github.com/yeeeww">
-              <img src="https://github.com/yeeeww.png" width="100">
+              <img src="https://github.com/yeeeww.png" width="60">
               <br />
               <b></b>
             </a>
         </td>
         <td style="min-width: 150px;">
             <a href="https://github.com/letthem">
-              <img src="https://github.com/letthem.png" width="100">
+              <img src="https://github.com/letthem.png" width="60">
               <br />
               <b></b>
             </a>
         </td>
         <td style="min-width: 150px;">
             <a href="https://github.com/yyj0917">
-              <img src="https://github.com/yyj0917.png" width="100">
+              <img src="https://github.com/yyj0917.png" width="60">
               <br />
               <b></b>
             </a>
         </td>
         <td style="min-width: 150px;">
             <a href="">
-              <img src="" width="100">
+              <img src="" width="60">
               <br />
               <b></b>
             </a>
         </td>
         <td style="min-width: 150px;">
             <a href="">
-              <img src="" width="100">
+              <img src="" width="60">
               <br />
               <b></b>
             </a>
         </td>
         <td style="min-width: 150px;">
             <a href="https://github.com/lee-youn">
-              <img src="https://github.com/lee-youn.png" width="100">
+              <img src="https://github.com/lee-youn.png" width="60">
               <br />
               <b></b>
             </a>
