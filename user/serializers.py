@@ -17,6 +17,8 @@ class UserSerializer(serializers.ModelSerializer):
             age=validated_data['age'],
             password=validated_data['password'],
             tag_line=validated_data['tag_line'],
+            tier = validated_data['tier'],
+            position = validated_data['position'],
         )
         
         # school 필드를 포함하여 저장

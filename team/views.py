@@ -7,7 +7,10 @@ from .serializers import  TeamRequestSerializer, TeamNameSerializer
 from user.models import User
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
+from django.views.decorators.csrf import csrf_exempt
 
+
+@csrf_exempt
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_team(request):

@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 # Create your models here.
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, name, game_name, age, password, tag_line, **kwargs):
+    def create_user(self, email, name, game_name, age, password, tag_line, tier, position, **kwargs):
         if not email: 
             raise ValueError('Users must have an email')
         if not game_name:
@@ -16,6 +16,8 @@ class UserManager(BaseUserManager):
             game_name = game_name,
             age = age,
             tag_line = tag_line,
+            tier = tier,
+            position = position
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -44,6 +46,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     tag_line = models.CharField(max_length=100, blank = True, default="00")
     age = models.IntegerField(null=False, blank=False, default=0)
     school = models.CharField(max_length=100, blank = True)
+    tier = models.CharField(max_length=100, blank=True)
+    position = models.CharField(max_length=100, blank=True)
     puuid = models.CharField(max_length=200, blank = True, default="0")
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
