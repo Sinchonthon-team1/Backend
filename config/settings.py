@@ -27,7 +27,9 @@ SECRET_KEY = "django-insecure-yzs7)+h50#-q+uwc64ps5)y(d-*9me#^yki4%#8osj!0(b8r04
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*'] #나중에 수정
+
+ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
 
     'user',
     'match',
+    'team',
 
     'rest_framework',
     'rest_framework_simplejwt',
@@ -52,12 +55,17 @@ AUTH_USER_MODEL = 'user.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',  # 추가
     ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=3000),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': False,
@@ -109,24 +117,17 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-CORS_ORIGIN_WHITELIST = ['http://localhost:5175']
 
-#CORS_ALLOW_ORIGIS = [
-#    "http://localhost:5175",
-#]
+# CORS_ALLOW_ORIGIS = [
+#     "http://localhost:5175",
+# ]
 
-#CSRF_TRUSTED_ORIGINS = [
-#    "http://localhost:5175",
-#]
+# CSRF_TRUSTED_ORIGINS = [
+#     "http://localhost:5175",
+# ]
 
-CORS_ALLOW_ALL_ORIGIS = True
+CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ALLOW_CREDENTIALS = True
-
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5175",
-    # "https://your-production-domain.com",
-]
 
 
 ROOT_URLCONF = "config.urls"

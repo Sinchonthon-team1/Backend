@@ -79,7 +79,19 @@ class RegisterAPIView(APIView):
             serializer = UserSerializer(data=request.data)
             if serializer.is_valid():
                 email = serializer.validated_data.get('email')
+                nickname = serializer.validated_data.get('nickname')
                 puuid = response.json()['puuid']
+                
+                # 이메일 주소와 일치하는 학교 찾기
+                matched_universities = find_universities_by_email(email)
+                if not matched_universities:
+                    return Response({"message": "학교 메일이 아닙니다."}, status=status.HTTP_400_BAD_REQUEST)
+
+                serializer.save(
+                    school=matched_universities[0]
+                )
+
+                return Response({"message": "성공적으로 등록되었습니다."}, status=status.HTTP_201_CREATED)
         
                 # 이메일 주소와 일치하는 학교 찾기
                 matched_universities = find_universities_by_email(email)

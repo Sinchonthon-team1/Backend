@@ -11,6 +11,7 @@ class UserManager(BaseUserManager):
             raise ValueError('Users must have a game_name')
         user = self.model(
             email = email,
+
             name = name,
             game_name = game_name,
             age = age,
