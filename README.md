@@ -33,6 +33,9 @@ python3 manage.py runserver
 
 <hr/>
 
+![image](https://github.com/user-attachments/assets/aac169db-3bf0-4769-80a5-13f5fc21405b)
+
+
 ## 🙇 팀원소개
 
 <table align="center">
