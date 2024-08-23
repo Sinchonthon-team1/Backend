@@ -33,7 +33,8 @@ python3 manage.py runserver
 
 <hr/>
 
-![image](https://github.com/user-attachments/assets/aac169db-3bf0-4769-80a5-13f5fc21405b)
+![image](https://github.com/user-attachments/assets/af75d00f-2e0b-44e6-b673-39828f419c1c)
+
 
 
 ## 🙇 팀원소개
@@ -42,8 +43,7 @@ python3 manage.py runserver
     <tr align="center">
         <td style="min-width: 150px;">
             <a href="">
-              <img src="https://github.com/user-attachments/assets/aac169db-3bf0-4769-80a5-13f5fc21405b
-" width="60">
+              <img src="https://github.com/user-attachments/assets/af75d00f-2e0b-44e6-b673-39828f419c1c" width="60">
               <br />
               <b></b>
             </a>
