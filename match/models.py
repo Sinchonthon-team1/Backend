@@ -6,7 +6,9 @@ class Match (models.Model):
     school = models.CharField(max_length=128)
     matchDate = models.DateTimeField()
     teamScore = models.IntegerField()
+    openChatUrl = models.URLField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
 
     class Meta : 
         db_table = "match"

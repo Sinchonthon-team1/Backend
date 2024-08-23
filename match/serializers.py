@@ -5,3 +5,4 @@ class MatchSerializer(serializers.Serializer):
 	school = serializers.CharField()
 	matchDate = serializers.DateTimeField()
 	teamScore = serializers.IntegerField()
+	openChatUrl = serializers.URLField()
