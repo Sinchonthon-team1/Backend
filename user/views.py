@@ -77,6 +77,7 @@ class RegisterAPIView(APIView):
 
         if response.status_code == 200:
             serializer = UserSerializer(data=request.data)
+            print(serializer)
             if serializer.is_valid():
                 email = serializer.validated_data.get('email')
                 puuid = response.json()['puuid']
