@@ -11,6 +11,8 @@ class UserManager(BaseUserManager):
             raise ValueError('Users must have a nickname')
         user = self.model(
             email = email,
+            nickname=nickname, 
+            password=password,
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -34,7 +36,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     
     email = models.EmailField(unique=True, null=False, blank=False)
-    nickname = models.CharField(max_length=100, null=False, blank=False)
+    nickname = models.CharField(max_length=100, null=False)
     school = models.CharField(max_length=100, blank = True)
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
