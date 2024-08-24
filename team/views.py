@@ -57,11 +57,11 @@ def create_team(request):
         team = Team.objects.create(
             teamName=serializer.validated_data['teamName'],
             school=school,
-            leader=User.objects.get(game_name=serializer.validated_data['leader']),
-            member2=User.objects.get(game_name=serializer.validated_data['member2']),
-            member3=User.objects.get(game_name=serializer.validated_data['member3']),
-            member4=User.objects.get(game_name=serializer.validated_data['member4']),
-            member5=User.objects.get(game_name=serializer.validated_data.get('member5'))
+            leader=serializer.validated_data['leader'],
+            member2=serializer.validated_data['member2'],
+            member3=serializer.validated_data['member3'],
+            member4=serializer.validated_data['member4'],
+            member5=serializer.validated_data['member5']
         )
 
         return Response({

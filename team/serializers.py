@@ -53,7 +53,7 @@ class TeamRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
         fields = [
-            'teamame', 
+            'teamName', 
             'school', 
             'leader', 
             'member2', 
